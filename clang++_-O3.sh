@@ -5,7 +5,6 @@ clang++ \
 -Wall -Wextra -Wpedantic -Wshadow -Werror \
 -fcolor-diagnostics \
 "./src/main.cpp" \
-"./src/genericFunctions.cpp" \
 -o \
 "./executable"
 
