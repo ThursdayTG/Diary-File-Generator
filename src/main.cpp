@@ -1,3 +1,4 @@
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -11,8 +12,8 @@
 
 const std::string currentDateTime()
 {
-    using namespace std::chrono;
-    time_point<system_clock> now = system_clock::now();
+    namespace chrono = std::chrono;
+    chrono::time_point<chrono::system_clock> now = chrono::system_clock::now();
 
     return fmt::format("{0:%Y}-{0:%m}-{0:%d} --- {0:%X}", now);
 }
@@ -25,18 +26,29 @@ int main()
 
 
     {
-        std::ofstream outf{filename};
-        cout << "OFSTREAM OPENED." << endl;
+        namespace fs = std::filesystem;
 
+
+        cout << "ATTEMPTING TO OPEN FSTREAMS AND GENERATE FILE ... ";
+        std::ofstream outf{filename};
         std::ifstream file{filename};
-        cout << "IFSTREAM OPENED." << endl;
+
+        if (fs::exists(filename))
+        {
+            cout << "SUCCESS." << endl;
+        }
+        else
+        {
+            cout << "FILE COULD NOT BE GENERATED. MISSING PERMISSIONS? SPECIAL CHARACTERS INVALID FOR FILESYSTEM?" << endl;
+        }
 
 
         if (file.is_open())
         {
-            cout << "FILE \"" << filename << "\" SUCCESSFULLY GENERATED AND OPENED." << endl;
+            cout
+            << "\"" << filename << "\" OPENED." << endl
+            << "ATTEMPTING TO WRITE PLACEHOLDER CONTENT TO FILE ... ";
 
-            cout << "WRITING TO FILE." << endl;
             outf
             << "Lorem ipsum dolor sit amet ...  " << "\n"
             << "<br />" << "\n"
@@ -44,12 +56,20 @@ int main()
         }
         else
         {
-            cout
-            << "FILE COULD NOT BE OPENED. CHECK WHETHER FILE EXIST." << endl
-            << "MISSING PERMISSIONS? INVALID CHARACTERS FOR FILESYSTEM?" << endl;
+            cout << "COULD NOT OPEN FILE. MISSING PERMISSIONS?" << endl;
+        }
+
+
+        if (fs::is_empty(filename))
+        {
+            cout << "SUCCESS." << endl;
+        }
+        else
+        {
+            cout << "COULD NOT WRITE CONTENT TO FILE. MISSING PERMISSIONS?" << endl;
         }
     }
-    cout << "FSTREAMS CLOSED." << endl;
+    cout << endl << "CLOSING FSTREAMS." << endl;
 
 
     cout << "EXITING." << endl;
