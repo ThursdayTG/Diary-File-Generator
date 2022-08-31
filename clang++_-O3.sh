@@ -6,6 +6,8 @@ clang++ \
 -fcolor-diagnostics \
 -lfmt \
 "./src/main.cpp" \
+"./src/fileOperations.cpp" \
+"./src/currentDateTime.cpp" \
 -o \
 "./executable"
 
