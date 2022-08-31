@@ -23,18 +23,35 @@ int main()
     using std::cout, std::endl;
     std::string filename = currentDateTime() + " - new entry.md";
 
+
     {
         std::ofstream outf{filename};
+        cout << "OFSTREAM OPENED." << endl;
 
-        cout << "OFSTREAM OPENED, FILE GENERATED." << endl;
+        std::ifstream file{filename};
+        cout << "IFSTREAM OPENED." << endl;
 
-        cout << "WRITING TO FILE." << endl;
-        outf
-        << "Lorem ipsum dolor sit amet ...  " << "\n"
-        << "<br />" << "\n"
-        << "Lorem ipsum dolor sit amet ...  " << "\n";
+
+        if (file.is_open())
+        {
+            cout << "FILE \"" << filename << "\" SUCCESSFULLY GENERATED AND OPENED." << endl;
+
+            cout << "WRITING TO FILE." << endl;
+            outf
+            << "Lorem ipsum dolor sit amet ...  " << "\n"
+            << "<br />" << "\n"
+            << "Lorem ipsum dolor sit amet ...  " << "\n";
+        }
+        else
+        {
+            cout
+            << "FILE COULD NOT BE OPENED. CHECK WHETHER FILE EXIST." << endl
+            << "MISSING PERMISSIONS? INVALID CHARACTERS FOR FILESYSTEM?" << endl;
+        }
     }
+    cout << "FSTREAMS CLOSED." << endl;
 
-    cout << "OFSTREAM CLOSED, CONTENT WRITTEN TO FILE \"" << filename << "\". EXITING." << endl;
+
+    cout << "EXITING." << endl;
     return 0;
 }
