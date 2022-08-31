@@ -15,9 +15,12 @@ namespace fs = std::filesystem;
 
 
 
+// Returns whether or not file exists in local directory.
+// Will write to stdout for debugging purposes.
+
 bool fileExists(string filename)
 {
-    if (fs::exists(filename) == true)
+    if (fs::exists(filename))
     {
         cout << "SUCCESS." << endl;
 
@@ -36,6 +39,9 @@ bool fileExists(string filename)
     }
 }
 
+
+// Attempts to insert a placeholder into the newly generated file.
+// Will write to stdout for debugging purposes.
 
 bool fileInsertPlaceholder(string filename)
 {
@@ -67,6 +73,10 @@ bool fileInsertPlaceholder(string filename)
     }
 }
 
+
+// Checks whether generated file is empty to check whether
+// the placeholder has been successfully written to the file.
+// Will write to stdout for debugging purposes.
 
 bool fileContainsPlaceholder(string filename)
 {

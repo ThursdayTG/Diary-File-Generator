@@ -25,7 +25,7 @@ int main()
      || fileInsertPlaceholder(filename)
      || fileContainsPlaceholder(filename)
     )  {
-        // serves to stop calling more functions if any of them fail
+        // Empty if-instruction serves to stop calling more functions if any of them fail.
     }
 
 
