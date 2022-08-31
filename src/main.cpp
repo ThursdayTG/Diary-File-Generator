@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <string>
 
@@ -19,11 +20,14 @@ int main()
 
 
         //===== start ======
-        //lorem_ipsum
+        std::ofstream outf{ "test.md" };
 
 
         //=== operations ===
-        //lorem_ipsum
+        outf
+        << "Lorem ipsum dolor sit amet ...  " << "\n"
+        << "<br />" << "\n"
+        << "Lorem ipsum dolor sit amet ...  " << "\n";
 
 
         //====== end =======
