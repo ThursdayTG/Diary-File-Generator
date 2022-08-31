@@ -2,9 +2,13 @@
 #include <iostream>
 #include <string>
 
+#include <chrono>
+#include <format>
 
 
 
+
+/*
 const std::string currentDateTime()
 {
     time_t     now = time(0);
@@ -14,6 +18,15 @@ const std::string currentDateTime()
     strftime(buf, sizeof(buf), "%Y-%m-%d --- %X", &tstruct);
 
     return buf;
+}
+*/
+
+
+
+
+const std::string currentDateTime() {
+    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+    return std::format("{%Y-%m-%d.%X}", now);
 }
 
 
