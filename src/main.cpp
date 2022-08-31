@@ -11,9 +11,12 @@
 
 int main()
 {
+    using std::cout, std::endl;
+
+
     std::string filename = currentDateTime() + " - new entry.md";
 
-    std::cout << "ATTEMPTING TO GENERATE FILE ... ";
+    cout << "ATTEMPTING TO GENERATE FILE ... ";
     std::ofstream outf{filename};
 
 
@@ -26,8 +29,9 @@ int main()
     }
 
 
-    std::cout
-    << std::endl << "FSTREAMS CLOSED."
-    << std::endl << "EXITING.";
+    cout
+    << endl << "FSTREAMS CLOSED."
+    << endl << "EXITING."
+    << endl;
     return 0;
 }
