@@ -3,19 +3,33 @@
 #include <string>
 
 #include <chrono>
-#include <fmt/core.h>
-#include <fmt/chrono.h>
+#include <format>
 
 
 
 
+/*
 const std::string currentDateTime()
 {
-    using namespace std::chrono;
-    time_point<system_clock> now = system_clock::now();
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%Y-%m-%d --- %X", &tstruct);
 
-    return fmt::format("{0:%Y}-{0:%m}-{0:%d} --- {0:%X}", now);
+    return buf;
 }
+*/
+
+
+
+
+const std::string currentDateTime() {
+    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+    return std::format("{%Y-%m-%d.%X}", now);
+}
+
+
 
 
 int main()
