@@ -2,21 +2,20 @@
 #include <iostream>
 #include <string>
 
+#include <chrono>
+#include <fmt/core.h>
+#include <fmt/chrono.h>
+
 
 
 
 const std::string currentDateTime()
 {
-    time_t     now = time(0);
-    struct tm  tstruct;
-    char       buf[80];
-    tstruct = *localtime(&now);
-    strftime(buf, sizeof(buf), "%Y-%m-%d --- %X", &tstruct);
+    using namespace std::chrono;
+    time_point<system_clock> now = system_clock::now();
 
-    return buf;
+    return fmt::format("{0:%Y}-{0:%m}-{0:%d} --- {0:%X}", now);
 }
-
-
 
 
 int main()
