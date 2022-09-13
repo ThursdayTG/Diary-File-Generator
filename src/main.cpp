@@ -29,7 +29,7 @@ int main()
 
 
     cout
-    << endl << "FSTREAMS CLOSED ."
+    << endl << "FSTREAMS CLOSED. "
     << endl << "EXITING. "
     << endl;
     return 0;
