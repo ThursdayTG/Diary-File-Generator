@@ -6,6 +6,6 @@
 
 
 
-bool fileExists(std::string);
-bool fileInsertPlaceholder(std::string);
-bool fileContainsPlaceholder(std::string);
+bool fileExists(std::string filename);
+bool fileInsertPlaceholder(std::string filename);
+bool fileContainsPlaceholder(std::string filename);

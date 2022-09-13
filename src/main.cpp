@@ -20,13 +20,12 @@ int main()
     std::ofstream outf{filename};
 
 
-    if (
+    // prevents calling other functions if any of these functions fail
+    (void) (
         fileExists(filename)
      || fileInsertPlaceholder(filename)
      || fileContainsPlaceholder(filename)
-    )  {
-        // Empty if-instruction serves to stop calling more functions if any of them fail.
-    }
+    );
 
 
     cout
