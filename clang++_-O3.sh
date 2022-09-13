@@ -9,7 +9,7 @@ clang++ \
 "./src/fileOperations.cpp" \
 "./src/currentDateTime.cpp" \
 -o \
-"./executable"
+"./diaryFileGenerator"
 
 
 echo -e "\n\n\n ===== COMPILATION ATTEMPT FINISHED ====="
