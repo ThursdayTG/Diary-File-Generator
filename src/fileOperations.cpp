@@ -22,7 +22,7 @@ bool fileExists(string filename)
 {
     if (fs::exists(filename))
     {
-        cout << "SUCCESS." << endl;
+        cout << "SUCCESS. " << endl;
 
         return 0;
     }
@@ -30,9 +30,9 @@ bool fileExists(string filename)
     {
         cout
         << endl
-        << "COULD NOT GENERATE FILE."
-        << "MISSING PERMISSIONS?"
-        << "SPECIAL CHARACTERS INVALID FOR FILESYSTEM?"
+        << "COULD NOT GENERATE FILE. "
+        << "MISSING PERMISSIONS? "
+        << "SPECIAL CHARACTERS INVALID FOR FILESYSTEM? "
         << endl;
 
         return 1;
@@ -51,7 +51,7 @@ bool fileInsertPlaceholder(string filename)
     if (file.is_open() == true)
     {
         cout
-        << "\"" << filename << "\" OPENED." << endl
+        << "\"" << filename << "\" OPENED. " << endl
         << "ATTEMPTING TO WRITE PLACEHOLDER CONTENT TO FILE ... ";
 
         outf
@@ -65,8 +65,8 @@ bool fileInsertPlaceholder(string filename)
     {
         cout
         << endl
-        << "COULD NOT OPEN FILE."
-        << "MISSING PERMISSIONS?"
+        << "COULD NOT OPEN FILE. "
+        << "MISSING PERMISSIONS? "
         << endl;
 
         return 1;
@@ -90,8 +90,8 @@ bool fileContainsPlaceholder(string filename)
     {
         cout
         << endl
-        << "COULD NOT WRITE CONTENT TO FILE."
-        << "MISSING PERMISSIONS?"
+        << "COULD NOT WRITE CONTENT TO FILE. "
+        << "MISSING PERMISSIONS? "
         << endl;
 
         return 1;
